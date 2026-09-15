@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* --- BASE & ESTRUTURA GERAL --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    margin: 0; 
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+    flex: 1;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    margin: 40px 0;
+}
+
+/* --- MENU PRINCIPAL --- */
+.menu-topo {
+    background-color: #333333;
+    padding: 15px 0;
+}
+
+.menu-topo ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.menu-topo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.menu-topo a:hover {
+    color: #E30613;
+}
+
+/* --- CABEÇALHO LADO A LADO --- */
+header {
+    background-image: linear-gradient(rgba(227, 6, 19, 0.85), rgba(227, 6, 19, 0.85)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 60px;
+}
+
+.logo-empresa {
+    width: 320px;
+    height: auto;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.header-texto {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header-texto h1 {
+    margin: 0;
+    font-size: 3.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.header-texto p {
+    font-size: 1.3em;
+    margin-top: 15px;
+    line-height: 1.4;
+}
+
+/* --- SERVIÇOS --- */
+.servicos {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.servico-item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    width: 30%;
+    border-bottom: 4px solid #E30613;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.icone-servico {
+    font-size: 40px;
+    color: #E30613;
+    margin-bottom: 15px;
+}
+
+/* --- DIFERENCIAIS --- */
+.diferenciais {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.diferencial-item {
+    text-align: center;
+    flex: 1;
+}
+
+.bolha-icone {
+    background-color: #fce4e4;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px auto;
+}
+
+.bolha-icone i {
+    font-size: 35px;
+    color: #E30613;
+}
+
+
+
+
+/* --- PORTFÓLIO DE PROJETOS (CSS GRID) --- */
+.portfolio-grid {
+    display: grid;
+    /* Essa linha abaixo é mágica: cria colunas com no mínimo 300px. 
+       Se tiver espaço, ela coloca lado a lado. Se a tela for pequena, ela joga pra baixo sozinha! */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.portfolio-item {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden; /* Corta a ponta quadrada da imagem para ficar redondinha no topo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* O efeito 3D ao passar o mouse */
+.portfolio-item:hover {
+    transform: translateY(-10px); /* Faz o card subir 10 pixels */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Aumenta a sombra para dar sensação de altura */
+}
+
+/* Deixa todas as imagens exatamente do mesmo tamanho sem amassar */
+.portfolio-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; 
+}
+
+.portfolio-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.portfolio-info h3 {
+    margin: 0 0 10px 0;
+    color: #E30613; /* Título em vermelho */
+    font-size: 1.2em;
+}
+
+.portfolio-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+
+
+
+/* --- ORÇAMENTO ONLINE --- */
+.orcamento-box {
+    background-color: #2b2b2b;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.linha-inputs {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-orcamento input[type="text"],
+.form-orcamento input[type="email"],
+.form-orcamento input[type="tel"],
+.form-orcamento textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: #ffffff;
+}
+
+.form-orcamento textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.opcoes-servicos {
+    width: 100%;
+    color: white;
+}
+
+.opcoes-servicos label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #E30613;
+}
+
+.checkbox-item {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.btn-enviar {
+    background-color: #E30613;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-enviar:hover {
+    background-color: #b3000b;
+}
+
+/* --- SOBRE O ENGENHEIRO --- */
+.sobre-box {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente a foto e o texto */
+    gap: 40px;
+    background-color: #f8f9fa; /* Fundo cinza bem clarinho */
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 50px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* A foto vai ocupar 1 parte do espaço */
+.sobre-foto {
+    flex: 1; 
+}
+
+.sobre-foto img {
+    width: 100%;
+    border-radius: 8px; /* Borda arredondada na imagem */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* O texto vai ocupar 2 partes do espaço (fica mais largo que a foto) */
+.sobre-texto {
+    flex: 2; 
+}
+
+.sobre-texto h3 {
+    color: #E30613; /* Nome do Renan em vermelho */
+    margin-top: 0;
+    font-size: 2.2em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sobre-texto p {
+    font-size: 16px;
+    line-height: 1.6; /* Espaçamento confortável para leitura */
+    color: #444;
+    margin-bottom: 15px;
+}
+
+
+/* --- CONTATO E BOTÕES --- */
+.contato-box {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 50px;
+}
+
+.dados-contato {
+    font-size: 18px;
+    margin: 20px 0;
+    line-height: 1.8;
+    font-weight: bold;
+    color: #444;
+}
+
+.dados-contato i {
+    color: #E30613;
+    margin-right: 10px;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-whatsapp i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe57;
+}
+
+
+
+
+
+/* --- RODAPÉ --- */
+footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+footer p {
+    color: #cccccc;
+    margin: 5px 0;
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 768px) {
+    .menu-topo ul {
+        gap: 15px;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .logo-empresa {
+        width: 220px;
+    }
+
+    .header-texto h1 {
+        font-size: 2.2em;
+    }
+
+    .servicos, .diferenciais, .linha-inputs {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .servico-item {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    .sobre-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+}

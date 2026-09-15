@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miotti Engenharia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Novo Menu de Navegação -->
+    <nav class="menu-topo">
+        <ul>
+            <li><a href="#topo">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#orcamento">Orçamento</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <header id="topo">
+        <div class="header-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo Miotti Engenharia" class="logo-empresa">
+            
+            <div class="header-texto">
+                <h1>Miotti Engenharia</h1>
+                <p>Obras em andamento e projetos personalizados<br>em Santo Ângelo e região</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <h2 id="servicos">Nossos Serviços</h2>
+        <div class="servicos">
+            <div class="servico-item">
+                <!-- Ícone de prancheta/documento -->
+                <i class="fa-solid fa-file-contract icone-servico"></i>
+                <h3>Regularizações</h3>
+                <p>Legalização de imóveis e adequação às normas.</p>
+            </div>
+            <div class="servico-item">
+                <!-- Ícone de projeto/medidas -->
+                <i class="fa-solid fa-pen-ruler icone-servico"></i>
+                <h3>Projetos</h3>
+                <p>Projetos arquitetônicos e estruturais personalizados.</p>
+            </div>
+            <div class="servico-item">
+                <!-- Ícone de construção/capacete -->
+                <i class="fa-solid fa-helmet-safety icone-servico"></i>
+                <h3>Obras</h3>
+                <p>Execução e acompanhamento do início ao fim.</p>
+            </div>
+        </div>
+<hr>
+
+        <!-- Seção: Diferenciais -->
+        <h2>Por que nos escolher?</h2>
+        <div class="diferenciais">
+            <div class="diferencial-item">
+                <div class="bolha-icone">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <h3>Atendimento Próximo</h3>
+                <p>Contato direto com o engenheiro, sem intermediários e com total transparência.</p>
+            </div>
+            
+            <div class="diferencial-item">
+                <div class="bolha-icone">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+                <h3>Gestão Eficiente</h3>
+                <p>Controle rigoroso de prazos e custos para a sua obra não sair do orçamento.</p>
+            </div>
+            
+            <div class="diferencial-item">
+                <div class="bolha-icone">
+                    <i class="fa-solid fa-medal"></i>
+                </div>
+                <h3>Qualidade Técnica</h3>
+                <p>Soluções modernas e seguras, garantindo a melhor execução para o seu projeto.</p>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Seção: Portfólio de Projetos -->
+        <h2 id="projetos">Projetos Recentes</h2>
+        <div class="portfolio-grid">
+            
+            <!-- Projeto 1 -->
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop" alt="Residência Moderna">
+                <div class="portfolio-info">
+                    <h3>Residência Alto Padrão</h3>
+                    <p>Projeto arquitetônico e execução de obra residencial completa. Design moderno e funcional.</p>
+                </div>
+            </div>
+
+            <!-- Projeto 2 -->
+            <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Execução de Obra">                <div class="portfolio-info">
+                    <h3>Acompanhamento de Obra</h3>
+                    <p>Gerenciamento estrutural e acompanhamento técnico para garantir segurança e qualidade.</p>
+                </div>
+            </div>
+
+            <!-- Projeto 3 -->
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Prédio Comercial">
+                <div class="portfolio-info">
+                    <h3>Regularização Comercial</h3>
+                    <p>Adequação às normas técnicas e laudo estrutural para espaço comercial.</p>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <h2 id="orcamento">Orçamento Online</h2>
+        <div class="orcamento-box">
+            <p style="color: white; margin-bottom: 20px;">Preencha o formulário e entraremos em contato com uma proposta.</p>
+            
+            <form id="formOrcamento" class="form-orcamento">
+                <!-- Linha 1: Nome e Email -->
+                <div class="linha-inputs">
+                    <input type="text" name="nome" placeholder="Nome" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                
+                <!-- Linha 2: Área e Telefone -->
+                <div class="linha-inputs">
+                    <input type="text" name="area" placeholder="Área estimada (m²)">
+                    <input type="tel" name="telefone" placeholder="Telefone" required>
+                </div>
+                
+                <!-- Serviços e Comentários Lado a Lado -->
+                <div class="linha-inputs">
+                    <div class="opcoes-servicos">
+                        <label>Escolha os Serviços *</label>
+                        <div class="checkbox-item"><input type="checkbox" name="servico" value="arquitetonico"> Projeto Arquitetônico</div>
+                        <div class="checkbox-item"><input type="checkbox" name="servico" value="estrutural"> Projeto Estrutural</div>
+                        <div class="checkbox-item"><input type="checkbox" name="servico" value="regularizacao"> Regularização de Imóveis</div>
+                        <div class="checkbox-item"><input type="checkbox" name="servico" value="obra"> Execução de Obra</div>
+                    </div>
+                    
+                    <textarea name="comentario" placeholder="Comentário adicional sobre os serviços..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar">Solicitar Orçamento</button>
+            </form>
+        </div>
+        <hr>
+
+        <!-- Seção: Sobre o Engenheiro -->
+        <h2 id="sobre">Engenheiro Responsável</h2>
+        <div class="sobre-box">
+            
+            <div class="sobre-foto">
+                <!-- Foto provisória. Depois salve a foto real como 'renan.jpg' na pasta static -->
+            <img src="{{ url_for('static', filename='renan.jpg') }}" alt="Engenheiro Renan Miotti">            </div>
+            
+            <div class="sobre-texto">
+                <h3>Renan Miranda Miotti</h3>
+                <p>Engenheiro Civil apaixonado por transformar ideias em realidade. Com forte atuação em Santo Ângelo e região, o foco da Miotti Engenharia é garantir segurança, economia e excelência técnica em cada etapa da sua obra.</p>
+                <p>Seja elaborando um projeto arquitetônico moderno, executando uma obra do zero ou realizando uma regularização minuciosa, meu compromisso é com a transparência e a satisfação total do cliente.</p>
+                <p><strong>CREA:</strong> RS-2216813222 </p>
+            </div>
+            
+        </div>
+        <h2 id="contato">Fale Conosco</h2>
+        <div class="contato-box">
+            <p>Pronto para tirar o seu projeto do papel? Entre em contato:</p>
+            
+            <p class="dados-contato">
+                <i class="fa-solid fa-envelope"></i> renan.m.miotti@gmail.com <br>
+                <i class="fa-solid fa-phone"></i> (55) 9935-8573
+            </p>
+
+            <a href="https://wa.me/555599358573" target="_blank" class="btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp
+            </a>
+        </div>
+    </div>    
+    <footer>
+        <p>&copy; 2026 Miotti Engenharia. Todos os direitos reservados.</p>
+        <p>Atendendo Santo Ângelo - RS e Região</p>
+    </footer>
+
+<!-- Script para enviar orçamento para o WhatsApp -->
+    <script>
+        // Fica "escutando" o momento em que o formulário é enviado
+        document.getElementById('formOrcamento').addEventListener('submit', function(event) {
+            
+            event.preventDefault(); 
+
+            // 1. Pega os valores que o cliente digitou
+            let nome = document.querySelector('input[name="nome"]').value;
+            let telefone = document.querySelector('input[name="telefone"]').value;
+            let area = document.querySelector('input[name="area"]').value;
+            let comentario = document.querySelector('textarea[name="comentario"]').value;
+
+            let servicosMarcados = [];
+            let checkboxes = document.querySelectorAll('input[name="servico"]:checked');
+            checkboxes.forEach(function(box) {
+                servicosMarcados.push(box.parentElement.textContent.trim()); 
+            });
+
+            // 3. Monta a mensagem formatada para o WhatsApp
+            let textoMensagem = `Olá! Gostaria de solicitar um orçamento para a Miotti Engenharia.\n\n`;
+            textoMensagem += `*Nome:* ${nome}\n`;
+            textoMensagem += `*Telefone:* ${telefone}\n`;
+            
+            if (area !== "") {
+                textoMensagem += `*Área Estimada:* ${area} m²\n`;
+            }
+            
+            if (servicosMarcados.length > 0) {
+                textoMensagem += `*Serviços de interesse:* ${servicosMarcados.join(', ')}\n`;
+            }
+            
+            if (comentario !== "") {
+                textoMensagem += `*Comentários adicionais:* ${comentario}\n`;
+            }
+
+            // 4. Converte o texto para o formato de "link de internet" (URL encode)
+            let textoCodificado = encodeURIComponent(textoMensagem);
+
+            // 5. O número do Renan (que você passou antes)
+            let numeroWhatsApp = "555599358573";
+
+            // 6. Abre uma nova aba direto no WhatsApp com a mensagem pronta!
+            let linkZap = `https://wa.me/${numeroWhatsApp}?text=${textoCodificado}`;
+            window.open(linkZap, '_blank');
+        });
+    </script>
+</body>
+
+</body>
+</html>
