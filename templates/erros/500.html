@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block titulo %}Erro no servidor — Miotti Engenharia{% endblock %}
+{% block conteudo %}
+<div class="erro-pagina">
+    <p class="erro-codigo">500</p>
+    <h1 class="titulo">Algo falhou do nosso lado</h1>
+    <p>O site encontrou um erro ao montar esta página. Tente novamente em instantes ou fale direto pelo WhatsApp.</p>
+    <a class="botao botao-cheio" href="{{ url_for('pagina_inicial') }}">Voltar ao início</a>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<section class="secao-formulario" style="padding: 4rem 1rem; max-width: 500px; margin: 0 auto;">
+    <div style="border: 1px solid var(--cor-borda, #ccc); padding: 2rem; background: var(--cor-fundo-card, #fff);">
+        <h2 style="font-family: monospace; margin-bottom: 1.5rem; text-transform: uppercase;">// Acesso Restrito</h2>
+        
+        {% if erro %}
+        <div style="background: #ffdddd; color: #a00; padding: 0.75rem; margin-bottom: 1rem; font-family: monospace; font-size: 0.9rem;">
+            {{ erro }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+            <div style="margin-bottom: 1rem;">
+                <label style="display: block; font-family: monospace; font-size: 0.85rem; margin-bottom: 0.3rem;">E-MAIL:</label>
+                <input type="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; font-family: monospace;">
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; font-family: monospace; font-size: 0.85rem; margin-bottom: 0.3rem;">SENHA:</label>
+                <input type="password" name="senha" required style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; font-family: monospace;">
+            </div>
+
+            <button type="submit" style="width: 100%; padding: 0.75rem; background: #000; color: #fff; border: none; font-family: monospace; font-weight: bold; cursor: pointer;">
+                ENTRAR NO PAINEL
+            </button>
+        </form>
+
+        <p style="margin-top: 1.5rem; font-family: monospace; font-size: 0.85rem; text-align: center;">
+            Ainda não tem conta? <a href="{{ url_for('cadastro') }}" style="color: inherit; text-decoration: underline;">Cadastre-se</a>
+        </p>
+    </div>
+</section>
+{% endblock %}

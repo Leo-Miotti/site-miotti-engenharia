@@ -1,2 +1,6 @@
-Flask
+Flask>=3.0
 gunicorn
+psycopg2-binary
+SQLAlchemy
+Flask-SQLAlchemy
+Flask-Login
