@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<section style="padding: 4rem 2rem; max-width: 900px; margin: 0 auto;">
+    <div style="border: 1px solid var(--cor-borda, #ccc); padding: 2.5rem; background: var(--cor-fundo-card, #fff);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 1rem; margin-bottom: 2rem;">
+            <h2 style="font-family: monospace; text-transform: uppercase; margin: 0;">// Painel Administrativo</h2>
+            <a href="{{ url_for('painel') }}" style="font-family: monospace; font-size: 0.85rem; color: #000; text-decoration: none; border: 1px solid #000; padding: 0.4rem 0.8rem;">MEU PAINEL</a>
+        </div>
+
+        <h3 style="font-family: monospace; text-transform: uppercase; font-size: 1rem; margin-bottom: 1.5rem;">Cadastrar Novo Projeto para Cliente</h3>
+
+        <form method="POST" style="margin-bottom: 3rem; background: #f9f9f9; padding: 1.5rem; border: 1px solid #ddd;">
+            <div style="margin-bottom: 1rem;">
+                <label style="display: block; font-family: monospace; font-size: 0.85rem; margin-bottom: 0.3rem;">SELECIONAR CLIENTE:</label>
+                <select name="cliente_id" required style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; font-family: monospace; background: #fff;">
+                    <option value="">-- Escolha um cliente --</option>
+                    {% for c in clientes %}
+                        <option value="{{ c.id }}">{{ c.nome }} ({{ c.email }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <label style="display: block; font-family: monospace; font-size: 0.85rem; margin-bottom: 0.3rem;">TÍTULO DO PROJETO / OBRA:</label>
+                <input type="text" name="titulo" placeholder="Ex: Projeto Estrutural - Residência Unifamiliar" required style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; font-family: monospace;">
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <label style="display: block; font-family: monospace; font-size: 0.85rem; margin-bottom: 0.3rem;">STATUS:</label>
+                <input type="text" name="status" placeholder="Ex: Em andamento / Em análise / Concluído" required style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; font-family: monospace;">
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; font-family: monospace; font-size: 0.85rem; margin-bottom: 0.3rem;">DESCRIÇÃO / OBSERVAÇÕES:</label>
+                <textarea name="descricao" rows="3" placeholder="Detalhes da etapa atual..." style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; font-family: monospace;"></textarea>
+            </div>
+
+            <button type="submit" style="width: 100%; padding: 0.75rem; background: #000; color: #fff; border: none; font-family: monospace; font-weight: bold; cursor: pointer;">
+                VINCULAR PROJETO AO CLIENTE
+            </button>
+        </form>
+
+        <h3 style="font-family: monospace; text-transform: uppercase; font-size: 1rem; margin-bottom: 1rem;">Projetos Já Cadastrados no Sistema:</h3>
+        {% if projetos %}
+            <div style="font-family: monospace; font-size: 0.9rem;">
+                {% for p in projetos %}
+                <div style="border-bottom: 1px solid #eee; padding: 1rem 0;">
+                    <strong>{{ p.titulo }}</strong> — <span style="color: #0070f3;">{{ p.status }}</span><br>
+                    <span style="color: #666; font-size: 0.85rem;">Cliente vinculado ID #{{ p.cliente_id }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p style="font-family: monospace; color: #666; font-size: 0.9rem;">Nenhum projeto cadastrado no sistema ainda.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

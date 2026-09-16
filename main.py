@@ -90,6 +90,19 @@ class Cliente(db.Model, UserMixin):
 def load_user(user_id):
     return Cliente.query.get(int(user_id))
 
+# --- Modelo de Projetos/Obras ----------------------------------------------
+class Projeto(db.Model):
+    __tablename__ = 'projetos'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    titulo = db.Column(db.String(150), nullable=False)         # Ex: Projeto Estrutural - Residência
+    status = db.Column(db.String(100), nullable=False)         # Ex: Em andamento, Concluído, Em análise
+    descricao = db.Column(db.Text, nullable=True)              # Detalhes do projeto
+    cliente_id = db.Column(db.Integer, db.ForeignKey('clientes.id'), nullable=False)
+    
+    # Cria uma relação fácil para puxar os dados do cliente direto pelo projeto
+    cliente = db.relationship('Cliente', backref=db.backref('projetos', lazy=True))
+
 
 # --- Rotas -----------------------------------------------------------------
 def registrar_rotas(app: Flask) -> None:
@@ -147,6 +160,38 @@ def registrar_rotas(app: Flask) -> None:
     @login_required # Só entra aqui quem estiver logado!
     def painel():
         return render_template("painel.html", nome=current_user.nome)
+
+    # --- Painel Administrativo (Gerenciar Obras dos Clientes) ---------------
+    @app.route("/admin", methods=["GET", "POST"])
+    @login_required
+    def admin_painel():
+        
+        emails_autorizados = ["leonardorafaelmiotti@gmail.com", "renan.m.miotti@gmail.com"]
+        
+        if current_user.email not in emails_autorizados: 
+            flash("Acesso não autorizado.", "erro")
+            return redirect(url_for('painel'))
+        
+        if request.method == "POST":
+            titulo = request.form.get("titulo")
+            status = request.form.get("status")
+            descricao = request.form.get("descricao")
+            cliente_id = request.form.get("cliente_id")
+
+            novo_projeto = Projeto(
+                titulo=titulo, 
+                status=status, 
+                descricao=descricao, 
+                cliente_id=cliente_id
+            )
+            db.session.add(novo_projeto)
+            db.session.commit()
+            return redirect(url_for('admin_painel'))
+
+        # Busca todos os clientes e projetos cadastrados para gerenciar
+        clientes = Cliente.query.all()
+        projetos = Projeto.query.all()
+        return render_template("admin.html", clientes=clientes, projetos=projetos)
 
     @app.route("/logout")
     @login_required

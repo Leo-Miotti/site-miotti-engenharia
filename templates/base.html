@@ -47,11 +47,15 @@
             <li><a href="{{ url_for('pagina_inicial') }}#contato">Contato</a></li>
 
             <li>
-            {% if current_user.is_authenticated %}
-            <a href="{{ url_for('painel') }}" style="font-family: monospace; text-decoration: none; border: 1px solid #000; padding: 0.5rem 1rem; font-weight: bold;"> Meu Painel</a>
-{% else %}
-            <a href="{{ url_for('login') }}" style="font-family: monospace; text-decoration: none; border: 1px solid #000; padding: 0.5rem 1rem; font-weight: bold;"> Login / Acesso</a>
-{% endif %}
+                {% if current_user.is_authenticated %}
+                    <!-- Se for um dos administradores, mostra o botão de Admin -->
+                    {% if current_user.email in ['leonardorafaelmiotti@gmail.com', 'renan.m.miotti@gmail.com'] %}
+                        <a href="{{ url_for('admin_painel') }}" style="color: #d00; font-weight: bold;">//  ADMIN  //  </a>
+                    {% endif %}
+                    <a href="{{ url_for('painel') }}"> Meu Painel</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}"> Login / acesso</a>
+                {% endif %}
             </li>
 
             <li><a class="menu-cta" href="{{ url_for('pagina_inicial') }}#orcamento">Pedir orçamento</a></li>
